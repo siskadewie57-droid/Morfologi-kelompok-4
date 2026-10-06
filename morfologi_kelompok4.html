@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pemahaman Morfologi | Kelompok 4</title>
+<style>
+:root{
+  --bg:#07111f;--card:#0e1d30;--card2:#122842;--text:#eef7ff;
+  --muted:#a9bdd0;--accent:#42d6b4;--accent2:#4aa8ff;--gold:#ffd166;
+  --danger:#ff6b6b;--border:rgba(255,255,255,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:
+radial-gradient(circle at 20% 10%,#12345a 0,transparent 28%),
+radial-gradient(circle at 90% 30%,#123b3b 0,transparent 25%),var(--bg);
+color:var(--text);line-height:1.65}
+header{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{max-width:1150px;margin:auto;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-weight:800;color:var(--accent);letter-spacing:.5px}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+button,.btn{border:0;border-radius:12px;padding:10px 15px;background:var(--accent2);color:white;font-weight:700;cursor:pointer;text-decoration:none}
+button:hover,.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.nav button{background:transparent;color:var(--muted)}
+.container{max-width:1150px;margin:auto;padding:28px 18px}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:60px 15px}
+.hero-box{max-width:850px}
+.badge{display:inline-block;padding:7px 13px;border:1px solid rgba(66,214,180,.35);background:rgba(66,214,180,.08);color:var(--accent);border-radius:999px;font-weight:700}
+h1{font-size:clamp(38px,7vw,76px);line-height:1.05;margin:20px 0 15px}
+h2{font-size:32px;margin-top:0}
+h3{color:var(--accent);margin-bottom:8px}
+p{color:var(--muted)}
+.hero p{font-size:18px}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.section{padding:55px 0}
+.section-title{margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+.card{background:linear-gradient(145deg,rgba(18,40,66,.95),rgba(14,29,48,.95));border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 10px 35px rgba(0,0,0,.18)}
+.card .icon{font-size:35px}
+.card button{margin-top:10px;width:100%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
+.stat{text-align:center;padding:18px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:15px}
+.stat strong{display:block;font-size:28px;color:var(--gold)}
+.hidden{display:none!important}
+.panel{background:rgba(10,24,40,.88);border:1px solid var(--border);border-radius:20px;padding:25px}
+.topic-head{display:flex;justify-content:space-between;gap:15px;align-items:start;flex-wrap:wrap}
+.back{background:#253a50}
+.table-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-top:15px}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left}
+th{background:#163451;color:var(--accent)}
+tr:last-child td{border-bottom:0}
+.quiz-config{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:15px 0}
+select{background:#0c1c2d;color:white;border:1px solid var(--border);border-radius:10px;padding:10px}
+.question{margin:18px 0;padding:20px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.025)}
+.option{display:block;padding:10px;margin:8px 0;border:1px solid var(--border);border-radius:10px;cursor:pointer;color:var(--muted)}
+.option:hover{background:rgba(74,168,255,.08);color:white}
+.option input{margin-right:8px}
+.result{text-align:center;padding:25px;border-radius:18px;background:rgba(66,214,180,.08);border:1px solid rgba(66,214,180,.25)}
+.progress{height:9px;background:#1b3045;border-radius:99px;overflow:hidden;margin:15px 0}
+.progress div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
+footer{padding:45px 18px;text-align:center;border-top:1px solid var(--border);margin-top:40px}
+.small{font-size:13px;color:#7f97ac}
+.highlight{color:var(--gold);font-weight:700}
+@media(max-width:650px){.stats{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}h2{font-size:27px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">🌍 MORFOLOGI | KELOMPOK 4</div>
+    <nav>
+      <button onclick="show('home')">Beranda</button>
+      <button onclick="show('materi')">Materi</button>
+      <button onclick="show('quiz')">Quiz</button>
+      <button onclick="show('anggota')">Kelompok</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div class="hero-box">
+      <span class="badge">GEOGRAFI • PEMAHAMAN MORFOLOGI</span>
+      <h1>Mengenal Bentuk Muka Bumi</h1>
+      <p>Pelajari bagaimana permukaan Bumi terbentuk, kenali ciri-cirinya, lihat contoh tertinggi, terbesar, terdalam, dan uji pemahamanmu melalui quiz.</p>
+      <div class="hero-actions">
+        <button onclick="show('materi')">📚 Mulai Belajar</button>
+        <button onclick="show('quiz')">🧠 Langsung Quiz</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>10</strong>Kategori</div>
+        <div class="stat"><strong>100+</strong>Bank Soal</div>
+        <div class="stat"><strong>1–25</strong>Soal Quiz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="materi" class="page hidden">
+<div class="container section">
+  <div class="section-title">
+    <span class="badge">MATERI MORFOLOGI</span>
+    <h2>Pilih Bentuk Muka Bumi</h2>
+    <p>Setiap materi berisi pengertian, proses pembentukan, ciri, contoh, serta daftar Top 10. Data peringkat menggunakan ukuran yang umum dipakai dalam geografi dan dapat berbeda menurut metode pengukuran.</p>
+  </div>
+  <div id="topicGrid" class="grid"></div>
+</div>
+</section>
+
+<section id="detail" class="page hidden">
+<div class="container section">
+  <div id="detailContent"></div>
+</div>
+</section>
+
+<section id="quiz" class="page hidden">
+<div class="container section">
+  <div class="panel">
+    <span class="badge">QUIZ MORFOLOGI</span>
+    <h2>Uji Pemahamanmu</h2>
+    <p>Pilih jumlah soal dari <b>1 sampai 25</b>. Soal akan diambil secara acak dari seluruh materi.</p>
+    <div class="quiz-config">
+      <label for="amount">Jumlah soal:</label>
+      <select id="amount"></select>
+      <button onclick="startQuiz()">▶ Mulai Quiz</button>
+    </div>
+    <div id="quizArea"></div>
+  </div>
+</div>
+</section>
+
+<section id="anggota" class="page hidden">
+<div class="container section">
+  <div class="panel">
+    <span class="badge">KELOMPOK 4</span>
+    <h2>Tim Pembuat Website</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">👑</div><h3>Robith</h3><p>Ketua Kelompok</p></div>
+      <div class="card"><div class="icon">🌿</div><h3>Alya</h3><p>Anggota</p></div>
+      <div class="card"><div class="icon">🌊</div><h3>Jihan</h3><p>Anggota</p></div>
+      <div class="card"><div class="icon">💻</div><h3>Raffli</h3><p>Pembuat Website</p></div>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+  <h2>Terima Kasih! 🌎</h2>
+  <p>Terima kasih sudah mempelajari materi Pemahaman Morfologi bersama Kelompok 4.</p>
+  <p class="small">Geografi • Kelompok 4 • Robith, Alya, Jihan, Raffli</p>
+</footer>
+
+<script>
+const topics = [
+{
+ id:"gunung",icon:"🏔️",name:"Gunung",
+ intro:"Gunung adalah bentuk muka Bumi yang menjulang tinggi di atas wilayah sekitarnya. Gunung dapat terbentuk melalui aktivitas tektonik, vulkanisme, atau proses pengangkatan dan erosi.",
+ formation:"Gunung api umumnya terbentuk ketika magma dari dalam Bumi naik ke permukaan dan menumpuk sebagai lava, abu, serta material vulkanik. Gunung nonvulkanik dapat terbentuk karena pergerakan dan pengangkatan kerak Bumi.",
+ features:["Memiliki elevasi relatif tinggi","Memiliki lereng yang menanjak","Dapat berupa gunung api maupun nonvulkanik","Bagian puncak dapat berbentuk kerucut, kubah, atau bentuk lain"],
+ examples:"Contoh di Indonesia: Puncak Jaya, Gunung Kerinci, Semeru, Rinjani, dan Merapi.",
+ topTitle:"Top 10 Gunung Tertinggi di Indonesia",
+ cols:["#","Gunung","Ketinggian","Lokasi"],
+ top:[
+ ["1","Puncak Jaya","4.884 m","Papua Tengah"],["2","Puncak Mandala","4.760 m","Papua Pegunungan"],
+ ["3","Puncak Trikora","4.730 m","Papua Pegunungan"],["4","Ngga Pulu","4.862 m","Papua Tengah"],
+ ["5","Gunung Kerinci","3.805 m","Jambi–Sumatera Barat"],["6","Gunung Rinjani","3.726 m","Nusa Tenggara Barat"],
+ ["7","Gunung Semeru","3.676 m","Jawa Timur"],["8","Gunung Sanggar","3.564 m","Nusa Tenggara Barat"],
+ ["9","Gunung Rantemario","3.478 m","Sulawesi Selatan"],["10","Gunung Slamet","3.432 m","Jawa Tengah"]
+ ]
+},
+{
+ id:"pegunungan",icon:"⛰️",name:"Pegunungan",
+ intro:"Pegunungan adalah rangkaian atau kelompok gunung yang saling berhubungan dan membentuk wilayah relief tinggi yang luas.",
+ formation:"Pegunungan dapat terbentuk akibat tumbukan lempeng tektonik, pengangkatan kerak, aktivitas vulkanik, serta proses erosi yang berlangsung dalam waktu sangat lama.",
+ features:["Terdiri atas banyak gunung atau punggungan","Wilayahnya relatif luas","Relief dan kemiringan lereng bervariasi","Sering menjadi daerah hulu sungai"],
+ examples:"Contoh: Pegunungan Himalaya, Andes, Alpen, Rocky Mountains, dan Pegunungan Jayawijaya.",
+ topTitle:"Top 10 Pegunungan Tertinggi di Dunia",
+ cols:["#","Pegunungan","Puncak tertinggi","Ketinggian"],
+ top:[
+ ["1","Himalaya","Everest","8.849 m"],["2","Karakoram","K2","8.611 m"],["3","Hindu Kush","Tirich Mir","7.708 m"],
+ ["4","Pamir","Kongur Tagh","7.649 m"],["5","Tian Shan","Jengish Chokusu","7.439 m"],
+ ["6","Kunlun","Liushi Shan","7.167 m"],["7","Hengduan","Gongga Shan","7.508 m"],
+ ["8","Nyainqêntanglha","Mount Nyenchen Tanglha","7.162 m"],["9","Andes","Aconcagua","6.961 m"],["10","Caucasus","Elbrus","5.642 m"]
+ ]
+},
+{
+ id:"perbukitan",icon:"🌄",name:"Perbukitan",
+ intro:"Perbukitan adalah wilayah yang terdiri atas bukit-bukit dengan relief bergelombang dan ketinggian relatif lebih rendah dibandingkan pegunungan.",
+ formation:"Perbukitan dapat terbentuk melalui pengangkatan tektonik, pelipatan, patahan, vulkanisme, atau erosi yang mengikis wilayah secara tidak merata.",
+ features:["Relief bergelombang","Lereng umumnya lebih landai daripada pegunungan tinggi","Terdiri atas banyak bukit","Dapat dimanfaatkan untuk perkebunan, permukiman, dan wisata"],
+ examples:"Contoh: Perbukitan Menoreh di Jawa, Perbukitan Kendeng, dan berbagai kawasan perbukitan di Sumatra.",
+ topTitle:"Top 10 Perbukitan/Highlands Terkenal di Dunia",
+ cols:["#","Kawasan","Titik tinggi/tinggi","Wilayah"],
+ top:[
+ ["1","Tibetan Plateau","±5.000 m rata-rata","Asia"],["2","Altiplano","±3.650 m rata-rata","Amerika Selatan"],
+ ["3","Ethiopian Highlands","hingga ±4.550 m","Afrika"],["4","Mexican Plateau","hingga ±2.400 m","Amerika Utara"],
+ ["5","Deccan Plateau","±600–900 m","India"],["6","Anatolian Plateau","±1.000–2.000 m","Turki"],
+ ["7","Iranian Plateau","±1.000–1.500 m","Asia Barat"],["8","Mongolian Plateau","±1.500 m rata-rata","Asia"],
+ ["9","Brazilian Highlands","hingga ±2.890 m","Brasil"],["10","Guiana Highlands","hingga ±3.000 m","Amerika Selatan"]
+ ]
+},
+{
+ id:"lembah",icon:"🏞️",name:"Lembah",
+ intro:"Lembah adalah bentuk muka Bumi yang lebih rendah daripada daerah di sekitarnya, biasanya memanjang dan sering menjadi tempat mengalirnya sungai.",
+ formation:"Lembah dapat terbentuk akibat erosi sungai, erosi glasial, pelapukan, serta gerakan tektonik. Lembah sungai cenderung berbentuk V, sedangkan lembah glasial sering berbentuk U.",
+ features:["Relatif lebih rendah dari daerah sekitarnya","Dapat memanjang mengikuti aliran sungai","Lembah sungai umumnya berbentuk V","Lembah glasial umumnya berbentuk U"],
+ examples:"Contoh: Grand Canyon, Lembah Yosemite, dan Lembah Baliem.",
+ topTitle:"Top 10 Lembah/Canyon Besar dan Terkenal",
+ cols:["#","Lembah/Canyon","Ciri ukuran","Lokasi"],
+ top:[
+ ["1","Yarlung Tsangpo Grand Canyon","sangat dalam & panjang","Tibet, Tiongkok"],["2","Kali Gandaki Gorge","lembah sangat dalam","Nepal"],
+ ["3","Colca Canyon","lembah dalam","Peru"],["4","Cotahuasi Canyon","lembah sangat dalam","Peru"],
+ ["5","Grand Canyon","panjang ±446 km","AS"],["6","Fish River Canyon","panjang ±160 km","Namibia"],
+ ["7","Cañon del Sumidero","dinding terjal","Meksiko"],["8","Kings Canyon","dinding batu pasir/granit","Australia"],
+ ["9","Waimea Canyon","canyon luas","Hawaii, AS"],["10","Blyde River Canyon","canyon besar","Afrika Selatan"]
+ ]
+},
+{
+ id:"datarantinggi",icon:"🏔️",name:"Dataran Tinggi",
+ intro:"Dataran tinggi adalah wilayah yang relatif datar atau bergelombang tetapi berada pada ketinggian yang cukup tinggi dibandingkan daerah di sekitarnya.",
+ formation:"Dapat terbentuk akibat pengangkatan wilayah yang luas, aktivitas vulkanik, atau proses erosi yang menyisakan permukaan tinggi.",
+ features:["Permukaannya relatif datar/bergelombang","Terletak pada elevasi tinggi","Suhu umumnya lebih rendah daripada dataran rendah pada kondisi yang sama","Banyak dimanfaatkan untuk pertanian dan perkebunan"],
+ examples:"Contoh: Dataran Tinggi Dieng, Tibet, Altiplano, dan Colorado Plateau.",
+ topTitle:"Top 10 Dataran Tinggi/Plateau Besar atau Tinggi",
+ cols:["#","Dataran tinggi","Keterangan","Wilayah"],
+ top:[
+ ["1","Tibetan Plateau","plateau sangat luas & tinggi","Asia"],["2","Altiplano","plateau tinggi Andes","Amerika Selatan"],
+ ["3","Colorado Plateau","plateau luas","AS"],["4","Deccan Plateau","plateau luas","India"],["5","Ethiopian Highlands","dataran tinggi luas","Ethiopia"],
+ ["6","Iranian Plateau","plateau besar","Asia Barat"],["7","Mongolian Plateau","plateau luas","Mongolia/Tiongkok"],["8","Brazilian Highlands","dataran tinggi luas","Brasil"],
+ ["9","Anatolian Plateau","plateau tinggi","Turki"],["10","Dataran Tinggi Dieng","±2.000 m","Jawa Tengah"]
+ ]
+},
+{
+ id:"dataranrendah",icon:"🌾",name:"Dataran Rendah",
+ intro:"Dataran rendah adalah wilayah dengan permukaan relatif datar dan elevasi rendah. Banyak dataran rendah terbentuk dari endapan material yang dibawa sungai.",
+ formation:"Proses sedimentasi sungai, laut, angin, dan aktivitas geologi dapat membentuk dataran rendah. Delta sungai merupakan salah satu contoh wilayah yang berkembang melalui pengendapan sedimen.",
+ features:["Relatif datar","Elevasi rendah","Banyak terdapat permukiman dan pusat kegiatan ekonomi","Tanah aluvial dapat sangat subur"],
+ examples:"Contoh: dataran rendah pantai utara Jawa, dataran rendah Amazon, dan dataran Indo-Gangga.",
+ topTitle:"Top 10 Dataran Rendah/Lowlands Terkenal",
+ cols:["#","Kawasan","Keterangan","Wilayah"],
+ top:[
+ ["1","Amazon Basin","dataran rendah sangat luas","Amerika Selatan"],["2","West Siberian Plain","sangat luas","Rusia"],
+ ["3","Indo-Gangetic Plain","sangat luas & padat penduduk","Asia Selatan"],["4","North China Plain","dataran aluvial luas","Tiongkok"],
+ ["5","Mississippi Alluvial Plain","dataran aluvial","AS"],["6","European Plain","dataran luas","Eropa"],
+ ["7","Congo Basin","cekungan rendah luas","Afrika"],["8","Murray-Darling Basin","dataran/cekungan luas","Australia"],
+ ["9","Pantura Jawa","dataran pantai","Indonesia"],["10","Mekong Delta","dataran delta","Asia Tenggara"]
+ ]
+},
+{
+ id:"laut",icon:"🌊",name:"Laut",
+ intro:"Laut adalah kumpulan air asin yang sebagian besar menutupi permukaan Bumi dan berhubungan dengan samudra. Dalam kajian morfologi dasar laut, terdapat paparan benua, lereng benua, dataran abisal, palung, dan punggung tengah samudra.",
+ formation:"Cekungan laut terbentuk melalui proses tektonik, pemekaran dasar samudra, penunjaman lempeng, sedimentasi, dan perubahan muka laut.",
+ features:["Airnya asin","Berhubungan dengan sistem samudra","Memiliki bentuk dasar laut yang beragam","Menjadi habitat berbagai organisme"],
+ examples:"Laut Jawa, Laut Banda, Laut Sulawesi, Laut Mediterania, dan Laut Karibia.",
+ topTitle:"Top 10 Laut/Samudra Berdasarkan Luas",
+ cols:["#","Laut/Samudra","Luas perkiraan","Keterangan"],
+ top:[
+ ["1","Samudra Pasifik","±165 juta km²","Terluas"],["2","Samudra Atlantik","±106 juta km²","Samudra besar"],
+ ["3","Samudra Hindia","±70 juta km²","Di antara Afrika–Asia–Australia"],["4","Samudra Selatan","±22 juta km²","Mengelilingi Antarktika"],
+ ["5","Samudra Arktik","±15 juta km²","Terkecil dari 5 samudra"],["6","Laut Cina Selatan","±3,5 juta km²","Asia Tenggara"],
+ ["7","Laut Karibia","±2,75 juta km²","Atlantik barat"],["8","Laut Mediterania","±2,5 juta km²","Di antara Eropa–Afrika–Asia"],
+ ["9","Laut Bering","±2,3 juta km²","Pasifik utara"],["10","Laut Okhotsk","±1,6 juta km²","Pasifik barat"]
+ ],
+ extraTitle:"🌊 Laut Terdalam: Challenger Deep",
+ extra:"Challenger Deep di Palung Mariana adalah titik terdalam yang diketahui di lautan Bumi, dengan kedalaman sekitar 10,9 km di bawah permukaan laut. Angka dapat sedikit berbeda tergantung metode pengukuran."
+},
+{
+ id:"danau",icon:"🏞️",name:"Danau",
+ intro:"Danau adalah genangan air yang relatif luas dan dikelilingi daratan. Airnya dapat berupa air tawar atau asin.",
+ formation:"Danau dapat terbentuk akibat aktivitas tektonik, vulkanisme, pembendungan sungai, aktivitas glasial, pelarutan batuan, atau proses buatan manusia.",
+ features:["Dikelilingi daratan","Air relatif tergenang","Bisa alami atau buatan","Ukuran dan kedalamannya sangat beragam"],
+ examples:"Danau Toba, Danau Baikal, Danau Superior, Danau Tanganyika.",
+ topTitle:"Top 10 Danau Terbesar Berdasarkan Luas",
+ cols:["#","Danau","Luas perkiraan","Lokasi"],
+ top:[
+ ["1","Caspian Sea","±371.000 km²","Asia–Eropa"],["2","Superior","±82.100 km²","AS–Kanada"],["3","Victoria","±59.900 km²","Afrika"],
+ ["4","Huron","±59.600 km²","AS–Kanada"],["5","Michigan","±58.000 km²","AS"],["6","Tanganyika","±32.900 km²","Afrika"],
+ ["7","Baikal","±31.500 km²","Rusia"],["8","Great Bear Lake","±31.100 km²","Kanada"],["9","Malawi","±29.600 km²","Afrika"],
+ ["10","Great Slave Lake","±27.000 km²","Kanada"]
+ ],
+ extraTitle:"🏆 Danau terdalam: Baikal",
+ extra:"Danau Baikal di Rusia merupakan danau terdalam di dunia, dengan kedalaman sekitar 1.642 meter."
+},
+{
+ id:"sungai",icon:"🏞️",name:"Sungai",
+ intro:"Sungai adalah aliran air yang bergerak dari daerah tinggi menuju daerah yang lebih rendah dan akhirnya dapat bermuara ke laut, danau, atau sungai lain.",
+ formation:"Sungai berkembang dari aliran permukaan, mata air, pencairan salju/es, dan hujan. Erosi dan sedimentasi terus mengubah bentuk lembah serta alur sungai.",
+ features:["Memiliki hulu dan hilir","Mengalir mengikuti kemiringan topografi","Memiliki daerah aliran sungai (DAS)","Membawa sedimen dari hulu ke hilir"],
+ examples:"Sungai Amazon, Nil, Yangtze, Mississippi, dan Kapuas.",
+ topTitle:"Top 10 Sungai Terpanjang di Dunia",
+ cols:["#","Sungai","Panjang perkiraan","Wilayah"],
+ top:[
+ ["1","Nil","±6.650 km","Afrika"],["2","Amazon","±6.400 km","Amerika Selatan"],["3","Yangtze","±6.300 km","Tiongkok"],
+ ["4","Mississippi–Missouri","±6.275 km","AS"],["5","Yenisei–Angara","±5.539 km","Asia"],["6","Yellow River","±5.464 km","Tiongkok"],
+ ["7","Ob–Irtysh","±5.410 km","Asia"],["8","Paraná","±4.880 km","Amerika Selatan"],["9","Congo","±4.700 km","Afrika"],["10","Amur","±4.444 km","Asia"]
+ ],
+ extraTitle:"🇮🇩 Sungai terpanjang di Indonesia",
+ extra:"Sungai Kapuas di Kalimantan Barat merupakan sungai terpanjang di Indonesia, dengan panjang sekitar 1.143 km."
+},
+{
+ id:"gurun",icon:"🏜️",name:"Gurun",
+ intro:"Gurun adalah wilayah yang menerima curah hujan sangat rendah sehingga kondisi lingkungannya relatif kering. Gurun tidak selalu panas; ada pula gurun dingin.",
+ formation:"Kekeringan dapat terjadi karena pola atmosfer, letak subtropis, bayangan hujan pegunungan, pengaruh arus laut dingin, atau lokasi yang sangat jauh dari sumber kelembapan.",
+ features:["Curah hujan sangat rendah","Vegetasi jarang dan beradaptasi terhadap kekeringan","Bisa berupa gurun pasir, batu, kerikil, atau es","Perbedaan suhu siang dan malam dapat besar"],
+ examples:"Sahara, Gobi, Atacama, Arabian Desert, dan Antarktika.",
+ topTitle:"Top 10 Gurun Terluas di Dunia",
+ cols:["#","Gurun","Luas perkiraan","Jenis"],
+ top:[
+ ["1","Antarctic Desert","±13,8 juta km²","Es"],["2","Arctic Desert","±13,7 juta km²","Dingin/es"],["3","Sahara","±9,2 juta km²","Panas"],["4","Arabian Desert","±2,3 juta km²","Panas"],
+ ["5","Gobi","±1,3 juta km²","Dingin"],["6","Patagonian Desert","±0,67 juta km²","Dingin/semi-kering"],["7","Great Victoria","±0,65 juta km²","Panas"],["8","Great Basin","±0,49 juta km²","Dingin/semi-kering"],
+ ["9","Chihuahuan","±0,36 juta km²","Panas"],["10","Karakum","±0,35 juta km²","Panas"]
+ ],
+ extraTitle:"🏜️ Gurun panas terbesar",
+ extra:"Sahara merupakan gurun panas terbesar di dunia berdasarkan luas daratan gurun panas."
+}
+];
+
+const questions = [
+["Gunung adalah...","bentuk muka bumi yang menjulang tinggi dibanding daerah sekitarnya","cekungan berisi air","wilayah yang selalu datar","aliran air","A"],
+["Proses pembentukan gunung api berkaitan erat dengan...","aktivitas magma dan vulkanisme","sedimentasi pantai saja","angin muson","pasang surut","A"],
+["Pegunungan merupakan...","rangkaian atau kelompok gunung","satu lembah sempit","dataran rendah","satu sungai","A"],
+["Perbukitan umumnya memiliki relief...","bergelombang dan terdiri dari bukit-bukit","selalu datar","selalu berupa palung","selalu tertutup es","A"],
+["Lembah sungai muda umumnya memiliki bentuk penampang...","V","U","lingkaran sempurna","persegi","A"],
+["Lembah berbentuk U banyak berkaitan dengan erosi...","glasial","angin saja","ombak","gelombang seismik","A"],
+["Dataran tinggi memiliki ciri utama...","relatif datar/bergelombang tetapi berada di elevasi tinggi","selalu berada di bawah laut","selalu berbentuk kerucut","selalu tandus","A"],
+["Dataran rendah banyak terbentuk oleh...","sedimentasi dan proses pengendapan","letusan bintang","gerhana","pasang surut saja","A"],
+["Air laut memiliki kadar...","garam relatif tinggi","gula tinggi","air tawar murni","minyak tinggi","A"],
+["Bagian dasar laut yang sangat dalam dan sempit disebut...","palung laut","delta","dataran rendah","bukit pasir","A"],
+["Titik terdalam lautan yang diketahui berada di...","Challenger Deep, Palung Mariana","Danau Baikal","Laut Jawa","Laut Mediterania","A"],
+["Danau adalah...","genangan air yang relatif luas dan dikelilingi daratan","aliran air dari hulu ke hilir","gunung yang aktif","gurun pasir","A"],
+["Danau Baikal dikenal sebagai danau...","terdalam di dunia","terluas di dunia","tertinggi di dunia","terkering di dunia","A"],
+["Sungai mengalir terutama dari...","daerah tinggi menuju daerah rendah","laut menuju puncak gunung","gurun menuju awan","kutub menuju matahari","A"],
+["Bagian sungai tempat air bermula disebut...","hulu","hilir","delta","muara","A"],
+["Gurun dicirikan oleh...","curah hujan sangat rendah","curah hujan selalu tinggi","hutan sangat rapat","sungai sangat banyak","A"],
+["Sahara merupakan...","gurun panas terbesar","danau terdalam","gunung tertinggi","lembah terpanjang","A"],
+["Puncak Jaya berada di...","Indonesia","Jepang","Mesir","Brasil","A"],
+["Gunung Kerinci berada di wilayah...","Sumatra","Papua","Jawa","Bali","A"],
+["Dieng merupakan contoh...","dataran tinggi","palung laut","delta","gurun","A"],
+["Erosi oleh sungai dapat membentuk...","lembah","gunung api","palung samudra","danau tektonik saja","A"],
+["Sedimentasi adalah proses...","pengendapan material","pengangkatan magma","pelapukan kimia saja","penguapan laut","A"],
+["Tektonisme berkaitan dengan...","gerakan dan deformasi kerak Bumi","perubahan siang malam","angin harian","hujan asam saja","A"],
+["Relief permukaan Bumi dipengaruhi oleh...","tenaga endogen dan eksogen","cahaya Bulan saja","rotasi saja","awan saja","A"],
+["Tenaga eksogen meliputi...","pelapukan, erosi, dan sedimentasi","gempa dan tektonisme saja","vulkanisme saja","gerak lempeng saja","A"],
+["Tenaga endogen berasal terutama dari...","energi dari dalam Bumi","sinar Matahari saja","angin","air hujan","A"],
+["Samudra Pasifik merupakan...","samudra terluas","samudra terkecil","danau terbesar","gurun terbesar","A"],
+["Laut terdalam berkaitan dengan keberadaan...","palung laut","delta sungai","dataran aluvial","perbukitan kapur","A"],
+["Bentuk muka bumi yang relatif datar pada ketinggian rendah disebut...","dataran rendah","pegunungan","gunung","lembah glasial","A"],
+["Bentuk muka bumi yang merupakan cekungan memanjang dapat disebut...","lembah","gunung","dataran tinggi","gurun","A"]
+];
+
+// Tambahkan variasi pilihan dengan mengacak posisi jawaban.
+function shuffle(a){return a.sort(()=>Math.random()-.5)}
+
+function show(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(id==="materi") renderTopics();
+}
+function renderTopics(){
+ const g=document.getElementById("topicGrid");
+ g.innerHTML=topics.map(t=>`
+ <div class="card">
+  <div class="icon">${t.icon}</div>
+  <h3>${t.name}</h3>
+  <p>${t.intro}</p>
+  <button onclick="openTopic('${t.id}')">Pelajari →</button>
+ </div>`).join("");
+}
+function openTopic(id){
+ const t=topics.find(x=>x.id===id);
+ let table=`<div class="table-wrap"><table><thead><tr>${t.cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>`;
+ table+=t.top.map(row=>`<tr>${row.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("");
+ table+="</tbody></table></div>";
+ document.getElementById("detailContent").innerHTML=`
+ <div class="panel">
+  <div class="topic-head">
+   <div><span class="badge">${t.icon} MORFOLOGI</span><h2>${t.name}</h2></div>
+   <button class="back" onclick="show('materi')">← Kembali</button>
+  </div>
+  <h3>📖 Pengertian</h3><p>${t.intro}</p>
+  <h3>🌋 Proses Pembentukan</h3><p>${t.formation}</p>
+  <h3>🔎 Ciri-ciri</h3><ul>${t.features.map(x=>`<li>${x}</li>`).join("")}</ul>
+  <h3>📍 Contoh</h3><p>${t.examples}</p>
+  <h3>🏆 ${t.topTitle}</h3>${table}
+  ${t.extra?`<div class="card" style="margin-top:18px"><h3>${t.extraTitle}</h3><p>${t.extra}</p></div>`:""}
+  <div style="margin-top:22px"><button onclick="show('quiz')">🧠 Uji Materi dengan Quiz</button></div>
+ </div>`;
+ show('detail');
+}
+for(let i=1;i<=25;i++) document.getElementById("amount").innerHTML+=`<option value="${i}">${i} soal</option>`;
+
+let currentQuiz=[], currentIndex=0, score=0;
+function startQuiz(){
+ const n=+document.getElementById("amount").value;
+ currentQuiz=shuffle([...questions]).slice(0,n);
+ currentIndex=0;score=0;renderQuestion();
+}
+function renderQuestion(){
+ const q=currentQuiz[currentIndex];
+ const options=shuffle([
+  ["A",q[1]],["B",q[2]],["C",q[3]],["D",q[4]]
+ ]);
+ document.getElementById("quizArea").innerHTML=`
+ <div class="progress"><div style="width:${currentIndex/currentQuiz.length*100}%"></div></div>
+ <p><b>Soal ${currentIndex+1} dari ${currentQuiz.length}</b></p>
+ <div class="question">
+  <h3>${q[0]}</h3>
+  ${options.map((o,i)=>`<label class="option"><input type="radio" name="ans" value="${o[1]}" data-original="${o[0]}"> ${o[1]}</label>`).join("")}
+  <button onclick="submitAnswer()">Jawab →</button>
+ </div>`;
+}
+function submitAnswer(){
+ const chosen=document.querySelector('input[name="ans"]:checked');
+ if(!chosen){alert("Pilih salah satu jawaban terlebih dahulu.");return}
+ const q=currentQuiz[currentIndex];
+ if(chosen.value===q[1])score++;
+ currentIndex++;
+ if(currentIndex<currentQuiz.length) renderQuestion();
+ else showResult();
+}
+function showResult(){
+ const pct=Math.round(score/currentQuiz.length*100);
+ let msg=pct>=90?"Luar biasa! Pemahamanmu sangat kuat.":pct>=75?"Bagus! Tinggal sedikit lagi untuk semakin mantap.":pct>=60?"Cukup baik. Yuk ulangi materi yang masih membingungkan.":"Jangan menyerah! Pelajari lagi materi lalu coba quiz kembali.";
+ document.getElementById("quizArea").innerHTML=`
+ <div class="result">
+  <h2>🎉 Quiz Selesai!</h2>
+  <h1>${score}/${currentQuiz.length}</h1>
+  <p class="highlight">${pct}%</p>
+  <p>${msg}</p>
+  <button onclick="startQuiz()">🔄 Coba Lagi</button>
+  <button onclick="show('materi')">📚 Kembali ke Materi</button>
+ </div>`;
+}
+renderTopics();
+</script>
+</body>
+</html>
